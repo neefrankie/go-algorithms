@@ -1,0 +1,1 @@
+Go implementation of the algorithms described in the book Discrete Mathematics and Its Applications.
