@@ -1,4 +1,4 @@
-package exercises
+package dma
 
 // This file answers questions of Exercise 3.1 of
 // Discrete Mathematics and Its Applications.
