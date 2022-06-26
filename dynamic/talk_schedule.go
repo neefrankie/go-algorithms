@@ -2,6 +2,9 @@ package dynamic
 
 import "sort"
 
+// TalkSchedule represents a schedule of a talk.
+// DMA described this algorithm on page 211, Section 3.1.5,
+// and proved with mathematical induction on page 346.
 type TalkSchedule struct {
 	StartTime int64
 	EndTime   int64
