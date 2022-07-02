@@ -1,1 +1,1 @@
-Go implementation of the algorithms described in the book Discrete Mathematics and Its Applications.
+Go implementation of the algorithms described in books like Discrete Mathematics and Its Applications, Introduction to Algorithms, and Algorithms in C.
