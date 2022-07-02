@@ -2,7 +2,7 @@ package sorting
 
 import "fmt"
 
-func InsertionSortInt(arr []int) []int {
+func InsertionSort[T Number](arr []T) []T {
 
 	for i := 1; i < len(arr); i++ {
 		fmt.Printf("Start outer loop %d\n", i)
