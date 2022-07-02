@@ -203,3 +203,115 @@ func TestXPower(t *testing.T) {
 		})
 	}
 }
+
+func TestLongestWord(t *testing.T) {
+	type args struct {
+		sentence string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "Find longest word",
+			args: args{
+				sentence: "Find the longest word in an English sentence",
+			},
+			want: "sentence",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := LongestWord(tt.args.sentence); got != tt.want {
+				t.Errorf("LongestWord() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestTernarySearch(t *testing.T) {
+	type args struct {
+		x   int
+		arr []int
+	}
+	tests := []struct {
+		name string
+		args args
+		want int
+	}{
+		{
+			name: "Ternary search",
+			args: args{
+				x:   7,
+				arr: []int{1, 2, 3, 5, 6, 7, 8},
+			},
+			want: 5,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := TernarySearch(tt.args.x, tt.args.arr); got != tt.want {
+				t.Errorf("TernarySearch() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestClosestPair(t *testing.T) {
+	type args struct {
+		arr []float64
+	}
+	tests := []struct {
+		name  string
+		args  args
+		want  float64
+		want1 float64
+	}{
+		{
+			name: "Closest pair",
+			args: args{
+				arr: []float64{1, 5, 9, 3, 10},
+			},
+			want:  9,
+			want1: 10,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, got1 := ClosestPair(tt.args.arr)
+			if got != tt.want {
+				t.Errorf("ClosestPair() got = %v, want %v", got, tt.want)
+			}
+			if got1 != tt.want1 {
+				t.Errorf("ClosestPair() got1 = %v, want %v", got1, tt.want1)
+			}
+		})
+	}
+}
+
+func TestGreaterThanPreviousTermsSum(t *testing.T) {
+	type args struct {
+		arr []int
+	}
+	tests := []struct {
+		name string
+		args args
+		want []int
+	}{
+		{
+			name: "All greater items",
+			args: args{
+				arr: []int{1, 4, 9, 7, 14, 5, 41},
+			},
+			want: []int{4, 9, 41},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := GreaterThanPreviousTermsSum(tt.args.arr); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("GreaterThanPreviousTermsSum() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

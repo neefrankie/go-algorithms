@@ -1,6 +1,9 @@
 package dma
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 // This file answers questions of Exercise 3.1 of
 // Discrete Mathematics and Its Applications.
@@ -157,6 +160,111 @@ func xPower(x float64, n int) float64 {
 
 	for i := 1; i <= n; i++ {
 		result = result * x
+	}
+
+	return result
+}
+
+// LongestWord implements question 22:
+// find the longest word in an English sentence.
+func LongestWord(sentence string) string {
+	// Ensure we know the end of sentence is reached.
+	if !strings.HasSuffix(sentence, "\n") {
+		sentence += "\n"
+	}
+
+	var inWorld = false
+
+	var word string
+	var start = 0
+	for i, ch := range sentence {
+		if ch == ' ' || ch == '\t' || ch == '\n' || ch == '\r' {
+			// The first time read a space after a char.
+			if inWorld && i-start > len(word) {
+				word = sentence[start:i]
+			}
+			inWorld = false
+		} else if !inWorld {
+			// The first time read a char after discarding space
+			inWorld = true
+			start = i
+		}
+	}
+
+	return word
+}
+
+func TernarySearch(x int, arr []int) int {
+	var low = 0
+	var high = len(arr) - 1
+
+	for low < high {
+		diff := high - low + 1
+		if diff < 3 {
+			if x == arr[low] {
+				return low
+			} else if x == arr[high] {
+				return high
+			} else {
+				return -1
+			}
+		}
+
+		m := (diff) / 3
+		fmt.Printf("Divider %d\n", m)
+
+		if x == arr[m] {
+			return m
+		} else if x < arr[m] {
+			high = m
+		} else if x == arr[2*m] {
+			return 2 * m
+		} else if x < arr[2*m] {
+			low = m + 1
+			high = 2 * m
+		} else {
+			low = 2*m + 1
+		}
+	}
+
+	return -1
+}
+
+func ClosestPair(arr []float64) (float64, float64) {
+	var a, b float64
+
+	var distance = arr[1] - arr[0]
+	if distance < 0 {
+		distance = -distance
+	}
+
+	for outer := 1; outer < len(arr); outer++ {
+		for inner := 0; inner < outer; inner++ {
+			d := arr[outer] - arr[inner]
+			if d < 0 {
+				d = -d
+			}
+
+			if d < distance {
+				distance = d
+				a = arr[inner]
+				b = arr[outer]
+			}
+		}
+	}
+
+	return a, b
+}
+
+func GreaterThanPreviousTermsSum(arr []int) []int {
+	var result = make([]int, 0)
+	var sum = arr[0]
+
+	for i := 1; i < len(arr); i++ {
+		if arr[i] > sum {
+			result = append(result, arr[i])
+		}
+		sum += arr[i]
 	}
 
 	return result
