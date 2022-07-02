@@ -1,7 +1,7 @@
 package search
 
 func BinarySearch(x int, arr []int) int {
-	var i = 1
+	var i = 0
 	var j = len(arr) - 1
 
 	for i < j {
