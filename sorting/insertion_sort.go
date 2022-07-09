@@ -1,6 +1,8 @@
 package sorting
 
-func InsertionSort[T Number](arr []T) []T {
+import "goalgorithms/pkg"
+
+func InsertionSort[T pkg.Number](arr []T) []T {
 
 	for i := 1; i < len(arr); i++ {
 

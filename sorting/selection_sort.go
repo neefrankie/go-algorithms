@@ -1,6 +1,8 @@
 package sorting
 
-func SelectionSort[T Number](arr []T) {
+import "goalgorithms/pkg"
+
+func SelectionSort[T pkg.Number](arr []T) {
 	for outer := 0; outer < len(arr)-1; outer++ {
 		min := outer
 
